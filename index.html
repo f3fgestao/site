@@ -620,6 +620,10 @@
                     const [propostasSalvas, setPropostasSalvas] = useState([]);
                     const [filtro, setFiltro] = useState('');
                     const [tooltipAtivo, setTooltipAtivo] = useState(null);
+                    const [leadLiberado, setLeadLiberado] = useState(false);
+                    const [mostrarModalLead, setMostrarModalLead] = useState(false);
+                    const [leadDados, setLeadDados] = useState({ nome: '', telefone: '', email: '', cidade: '' });
+                    const [leadErro, setLeadErro] = useState('');
 
                     const calculos = useMemo(() => {
                         const capexEquipamentos = (formData.qtdAC * 8500) + (formData.qtdDC * 65000);
@@ -664,6 +668,34 @@
                     const toggleTooltip = useCallback((campo) => {
                         setTooltipAtivo(prev => prev === campo ? null : campo);
                     }, []);
+
+                    const mascaraTelefone = (val) => {
+                        let v = val.replace(/\D/g, '').slice(0, 11);
+                        if (v.length > 6) v = '(' + v.slice(0,2) + ') ' + v.slice(2,7) + '-' + v.slice(7);
+                        else if (v.length > 2) v = '(' + v.slice(0,2) + ') ' + v.slice(2);
+                        else if (v.length > 0) v = '(' + v;
+                        return v;
+                    };
+
+                    const validarEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+                    const liberarAcesso = useCallback(() => {
+                        if (!leadDados.nome.trim()) { setLeadErro('⚠️ Por favor, informe seu nome completo.'); return; }
+                        if (!leadDados.telefone || leadDados.telefone.replace(/\D/g,'').length < 10) { setLeadErro('⚠️ Por favor, informe um telefone válido com DDD.'); return; }
+                        if (!validarEmail(leadDados.email)) { setLeadErro('⚠️ Por favor, informe um e-mail válido.'); return; }
+                        if (!leadDados.cidade.trim()) { setLeadErro('⚠️ Por favor, informe sua cidade e UF.'); return; }
+                        setLeadErro('');
+                        // salvar no Supabase
+                        const SUPABASE_URL = 'https://nmzifhqivuhdfwlelmxp.supabase.co';
+                        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5temlmaHFpdnVoZGZ3bGVsbXhwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgyODcxMjMsImV4cCI6MjA2Mzg2MzEyM30.GFuUPkixbx8F0j5kM7yqmvBvXhyvqXkT4QMIhlr3dbc';
+                        fetch(SUPABASE_URL + '/rest/v1/leads', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json', 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY },
+                            body: JSON.stringify({ nome: leadDados.nome, telefone: leadDados.telefone, email: leadDados.email, cidade: leadDados.cidade, origem: 'Eletroposto SPA', interesse: 'Eletroposto' })
+                        }).catch(() => {});
+                        setLeadLiberado(true);
+                        setMostrarModalLead(false);
+                    }, [leadDados]);
 
                     const salvarProposta = useCallback(() => {
                         if (!formData.cliente.trim()) {
@@ -753,23 +785,66 @@
 
                     return (
                         <div>
-                            <div className="badge-chamada">
-                                <span className="emoji">🔓</span>
+                            {/* Modal de Lead */}
+                            {mostrarModalLead && (
+                                <div style={{ position:'fixed', inset:0, background:'rgba(0,0,0,0.75)', zIndex:9999, display:'flex', alignItems:'center', justifyContent:'center', padding:'20px' }}>
+                                    <div style={{ background:'#0a0f1a', border:'1px solid #334155', borderRadius:'16px', padding:'32px', maxWidth:'440px', width:'100%' }}>
+                                        <h3 style={{ color:'#e2e8f0', marginBottom:'6px', fontSize:'1.2rem' }}>🔓 Liberar Simulador</h3>
+                                        <p style={{ color:'#94a3b8', fontSize:'13px', marginBottom:'20px' }}>Preencha seus dados para acessar o simulador e receber sua proposta personalizada.</p>
+                                        <div style={{ display:'flex', flexDirection:'column', gap:'12px' }}>
+                                            <div>
+                                                <label style={{ color:'#94a3b8', fontSize:'12px', display:'block', marginBottom:'4px' }}>👤 Nome Completo *</label>
+                                                <input type="text" className="input-f3f" placeholder="Digite seu nome completo" value={leadDados.nome}
+                                                    onChange={e => setLeadDados(prev => ({...prev, nome: e.target.value}))} style={{ width:'100%' }} />
+                                            </div>
+                                            <div>
+                                                <label style={{ color:'#94a3b8', fontSize:'12px', display:'block', marginBottom:'4px' }}>📱 WhatsApp / Telefone *</label>
+                                                <input type="tel" className="input-f3f" placeholder="(62) 99999-9999" value={leadDados.telefone}
+                                                    onChange={e => setLeadDados(prev => ({...prev, telefone: mascaraTelefone(e.target.value)}))} style={{ width:'100%' }} />
+                                            </div>
+                                            <div>
+                                                <label style={{ color:'#94a3b8', fontSize:'12px', display:'block', marginBottom:'4px' }}>📧 E-mail *</label>
+                                                <input type="email" className="input-f3f" placeholder="seu@email.com" value={leadDados.email}
+                                                    onChange={e => setLeadDados(prev => ({...prev, email: e.target.value}))} style={{ width:'100%' }} />
+                                            </div>
+                                            <div>
+                                                <label style={{ color:'#94a3b8', fontSize:'12px', display:'block', marginBottom:'4px' }}>📍 Cidade / UF *</label>
+                                                <input type="text" className="input-f3f" placeholder="Ex: Goiânia / GO" value={leadDados.cidade}
+                                                    onChange={e => setLeadDados(prev => ({...prev, cidade: e.target.value}))} style={{ width:'100%' }} />
+                                            </div>
+                                            {leadErro && <div style={{ color:'#f87171', fontSize:'13px', padding:'8px 12px', background:'rgba(239,68,68,0.1)', borderRadius:'8px' }}>{leadErro}</div>}
+                                            <button className="btn-f3f primary" onClick={liberarAcesso} style={{ marginTop:'4px', width:'100%' }}>🔓 Liberar Simulador</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+
+                            <div className="badge-chamada" onClick={() => !leadLiberado && setMostrarModalLead(true)} style={{ cursor: leadLiberado ? 'default' : 'pointer' }}>
+                                <span className="emoji">{leadLiberado ? '✅' : '🔓'}</span>
                                 <span>
-                                    <strong>Libere aqui para ver preços,</strong> depois clique aqui para fazermos uma proposta 
-                                    para que você veja o payback, as condições de pagamento e fale conosco 
-                                    para gerar uma proposta personalizada.
+                                    {leadLiberado
+                                        ? <><strong>Simulador liberado!</strong> Preencha os dados abaixo e clique em <em>Salvar Proposta</em> para receber sua proposta personalizada.</>
+                                        : <><strong>Clique aqui para liberar o simulador</strong> — veja payback, ROI e condições de pagamento para seu projeto de eletroposto.</>
+                                    }
                                 </span>
                             </div>
 
+                            {/* Campos do formulário — só aparecem após lead liberado */}
+                            {leadLiberado && <div>
+
+                            {/* Campo Cliente — linha inteira */}
+                            <div className="campo-ajuda" style={{ marginBottom:'16px' }}>
+                                <div className="label-group"><label>Nome do Projeto / Estabelecimento *</label></div>
+                                <input type="text" name="cliente" className="input-f3f" value={formData.cliente} onChange={handleChange}
+                                    placeholder="Ex: Shopping Plaza, Condomínio Solar, Residência..." style={{ width:'100%' }} />
+                            </div>
+
                             <div className="grid-form">
-                                <CampoComAjuda nome="cliente" label="Cliente / Projeto *" descricao="Nome do cliente ou identificação do projeto para referência">
-                                    <input type="text" name="cliente" className="input-f3f" value={formData.cliente} onChange={handleChange} placeholder="Ex: Shopping Plaza" />
-                                </CampoComAjuda>
                                 <CampoComAjuda nome="tipoLocal" label="Tipo de Local" descricao="Perfil do estabelecimento onde os carregadores serão instalados">
                                     <select name="tipoLocal" className="input-f3f" value={formData.tipoLocal} onChange={handleChange}>
                                         <option>Estacionamento / Shopping</option><option>Posto de Combustível / Rodovia</option>
                                         <option>Hotel / Pousada</option><option>Empresarial / Condomínio</option>
+                                        <option>Residência</option><option>Outro</option>
                                     </select>
                                 </CampoComAjuda>
                                 <CampoComAjuda nome="qtdAC" label="Qtd. AC (22kW)" descricao="Carregadores lentos/semirrápidos. Ideais para estacionamentos de longa permanência">
@@ -787,15 +862,15 @@
                                 <CampoComAjuda nome="horasUsoDia" label="Horas de Uso / Dia" descricao="⏰ Estimativa de quantas horas por dia os carregadores ficam em uso (fator de simultaneidade 60%)">
                                     <input type="number" name="horasUsoDia" className="input-f3f" value={formData.horasUsoDia} onChange={handleChange} min="0" step="0.5" />
                                 </CampoComAjuda>
-                                <CampoComAjuda nome="custoObra" label="Custo de Obra/Infra (R$)" descricao="🏗️ Gastos com instalação elétrica, terraplanagem, adequações, mão de obra, etc.">
-                                    <input type="number" name="custoObra" className="input-f3f" value={formData.custoObra} onChange={handleChange} min="0" step="1000" />
-                                </CampoComAjuda>
+                                {/* Custo de Obra — campo admin, oculto para cliente */}
                                 <CampoComAjuda nome="margemLucro" label="Margem de Lucro (%)" descricao="📈 Percentual de lucro desejado sobre a receita bruta. Ex: 45% = R$ 0,45 de lucro para cada R$ 1,00 faturado">
                                     <input type="number" name="margemLucro" className="input-f3f" value={formData.margemLucro} onChange={handleChange} min="0" max="100" />
                                 </CampoComAjuda>
                             </div>
 
-                            <div className="card-resultado">
+                            </div>} {/* fim leadLiberado */}
+
+                            {leadLiberado && <div className="card-resultado">
                                 <div className="titulo">📊 Resumo Financeiro <span className="badge-atualizado">ATUALIZADO</span></div>
                                 <div className="grid-resultados">
                                     <div className="item"><div className="label">Investimento Total (CAPEX)</div><div className="valor gold">R$ {calculos.capexTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</div></div>
@@ -820,6 +895,7 @@
                                 <button className="btn-f3f ghost" onClick={() => { if (confirm('Resetar todos os campos?')) { setFormData({ cliente: '', tipoLocal: 'Estacionamento / Shopping', qtdAC: 2, qtdDC: 1, tarifaVenda: 2.10, custoEnergia: 1.10, horasUsoDia: 4, custoObra: 15000, margemLucro: 45 }); } }}>🔄 Resetar</button>
                                 {propostasSalvas.length > 0 && <button className="btn-f3f ghost" onClick={exportarCSV}>📊 Exportar CSV</button>}
                             </div>
+                            </div>} {/* fim card-resultado leadLiberado */}
 
                             {propostasSalvas.length > 0 && (
                                 <div className="historico-area">
@@ -839,7 +915,7 @@
                                 <div className="titulo">⏱️ Calculadora de Tempo de Carga <span style={{ fontSize: '12px', color: 'var(--text-dim)', fontWeight: '400' }}>— Simule o tempo de recarga do seu veículo</span></div>
                                 <div className="grid-calc">
                                     <div className="col">
-                                        <CampoComAjuda nome="potenciaCarregador" label="Potência do Carregador (kW)" descricao="Potência do carregador. Ex: 40kW para WEMOB Station">
+                                        <CampoComAjuda nome="potenciaCarregador" label="Potência do Carregador (kW)" descricao="Potência do carregador. Ex: 40kW DC rápido">
                                             <input type="number" name="potenciaCarregador" className="input-f3f" value={calcCarga.potenciaCarregador} onChange={handleCalcChange} min="1" step="1" />
                                         </CampoComAjuda>
                                         <CampoComAjuda nome="bateriaCapacidade" label="Capacidade da Bateria (kWh)" descricao="Capacidade total da bateria do veículo. Ex: 60 kWh (Chevrolet Bolt)">
@@ -1011,7 +1087,7 @@
                 </a>
 
                 <!-- Eletropostos -->
-                <div class="svc-card" style="border-color: var(--purple); cursor:pointer;" onclick="abrirPaginaMobilidade(event)">
+                <a class="svc-card" href="pages/eletroposto.html" style="border-color: var(--purple); text-decoration:none; color:inherit; display:block;">
                     <div>
                         <div class="svc-header"><span class="icon-tag">MOBILIDADE</span><div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg></div></div>
                         <h3>Eletropostos <span class="badge-novo">NOVO</span></h3>
