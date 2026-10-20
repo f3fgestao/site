@@ -1,0 +1,17 @@
+[
+    {
+        "key": "ctrl+shift+d",
+        "command": "workbench.action.tasks.runTask",
+        "args": "🚀 dev - Configurar Projeto"
+    },
+    {
+        "key": "ctrl+shift+m",
+        "command": "workbench.action.tasks.runTask",
+        "args": "🌐 Abrir Mercado Livre"
+    },
+    {
+        "key": "ctrl+shift+e",
+        "command": "workbench.action.tasks.runTask",
+        "args": "⚡ Abrir Eletropostos"
+    }
+]

@@ -1,0 +1,31 @@
+{
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.wordWrap": "on",
+    "editor.minimap.enabled": false,
+    "files.autoSave": "onFocusChange",
+    "files.exclude": {
+        "**/node_modules": true,
+        "**/.git": true,
+        "**/.DS_Store": true
+    },
+    "liveServer.settings.root": "/",
+    "liveServer.settings.port": 5500,
+    "liveServer.settings.openBrowser": true,
+    "liveServer.settings.wait": 500,
+    "html.format.wrapAttributes": "auto",
+    "html.format.wrapLineLength": 120,
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "[css]": {
+        "editor.defaultFormatter": "vscode.css-language-features"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "workbench.colorTheme": "Dark Modern",
+    "workbench.startupEditor": "none",
+    "terminal.integrated.defaultProfile.windows": "Command Prompt"
+}

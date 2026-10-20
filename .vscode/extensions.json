@@ -1,0 +1,14 @@
+{
+    "recommendations": [
+        "ritwickdey.liveserver",
+        "esbenp.prettier-vscode",
+        "ms-vscode.vscode-typescript-next",
+        "vscode.html-language-features",
+        "vscode.css-language-features",
+        "ms-vscode.vscode-js-profile-flame",
+        "formulahendry.auto-rename-tag",
+        "formulahendry.auto-close-tag",
+        "yzhang.markdown-all-in-one",
+        "bierner.markdown-mermaid"
+    ]
+}

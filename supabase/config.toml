@@ -1,0 +1,20 @@
+# Supabase Config
+[project]
+name = "f3f-gestao"
+version = "1.0.0"
+
+[auth]
+enabled = true
+
+[auth.email]
+enabled = true
+confirm_email = false
+
+[storage]
+enabled = true
+
+[api]
+enabled = true
+
+[db]
+enabled = true

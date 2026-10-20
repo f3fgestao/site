@@ -1,0 +1,26 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Chrome",
+            "type": "chrome",
+            "request": "launch",
+            "file": "${workspaceFolder}/index.html",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "name": "Launch Mercado Livre",
+            "type": "chrome",
+            "request": "launch",
+            "file": "${workspaceFolder}/pages/mercado-livre.html",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "name": "Launch Eletropostos",
+            "type": "chrome",
+            "request": "launch",
+            "file": "${workspaceFolder}/pages/eletropostos.html",
+            "webRoot": "${workspaceFolder}"
+        }
+    ]
+}

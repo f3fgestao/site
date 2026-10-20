@@ -1,0 +1,121 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "🚀 dev - Configurar Projeto",
+            "type": "shell",
+            "command": "dev.bat",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "🌐 Abrir Mercado Livre",
+            "type": "shell",
+            "command": "start pages/mercado-livre.html",
+            "group": "none",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "⚡ Abrir Eletropostos",
+            "type": "shell",
+            "command": "start pages/eletropostos.html",
+            "group": "none",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "📄 Abrir ROADMAP",
+            "type": "shell",
+            "command": "start ROADMAP.md",
+            "group": "none",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "🔄 Git Status",
+            "type": "shell",
+            "command": "git status",
+            "group": "none",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "📦 Git Add + Commit",
+            "type": "shell",
+            "command": "git add . && git commit -m \"${input:commitMessage}\"",
+            "group": "none",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "⬆️ Git Push",
+            "type": "shell",
+            "command": "git push",
+            "group": "none",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "⬇️ Git Pull",
+            "type": "shell",
+            "command": "git pull",
+            "group": "none",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "📊 Git Log",
+            "type": "shell",
+            "command": "git log --oneline -10",
+            "group": "none",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        }
+    ],
+    "inputs": [
+        {
+            "id": "commitMessage",
+            "type": "promptString",
+            "description": "Digite a mensagem do commit:"
+        }
+    ]
+}
