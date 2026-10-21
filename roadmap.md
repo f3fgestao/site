@@ -1,117 +1,144 @@
-# ROADMAP - F3F Gestão Energética
-
-## Versão 1.0.2 (Atual - 08/08/2026)
-
-### ✅ Implementado
-
-#### 1. MERCADO LIVRE
-- [x] 1.1 - Página completa criada em `pages/mercado-livre.html`
-- [x] 1.2 - Explicação detalhada sobre elegibilidade, processo e vantagens
-- [x] 1.3 - Links para contato (WhatsApp e E-mail)
-- [x] 1.4 - Design com identidade F3F (cores: azul, roxo, amarelo)
-- [x] 1.5 - Header com navegação para voltar ao início
-- [x] 1.6 - Seção "Como funciona" com 4 passos
-- [x] 1.7 - Cards com vantagens (economia, previsibilidade, origem, sob medida)
-- [x] 1.8 - Seção "Onde a F3F entra" com diferenciais
-
-#### 2. GD & SOLAR
-- [ ] 2.1 - Imagem (pendente)
-- [ ] 2.2 - Explicação (pendente)
-- [ ] 2.3 - Link para contato (pendente)
-- [ ] 2.4 - Página completa em `pages/solar.html` (pendente)
-
-#### 3. BESS (Baterias)
-- [ ] 3.1 - Página em `pages/bess.html` (pendente)
-- [ ] 3.2 - Explicação sobre sistemas de armazenamento (pendente)
-- [ ] 3.3 - Benefícios e aplicações (pendente)
-- [ ] 3.4 - Links para contato (pendente)
-
-#### 4. INFRAESTRUTURA
-- [ ] 4.1 - Página em `pages/infraestrutura.html` (pendente)
-- [ ] 4.2 - Explicação sobre redes e subestações (pendente)
-- [ ] 4.3 - Links para contato (pendente)
-
-#### 5. MOBILIDADE (Eletropostos)
-- [x] 5.1 - Página completa criada em `pages/eletropostos.html`
-- [x] 5.2 - Hero com "Estudo de Viabilidade para Eletropostos"
-- [x] 5.3 - Calculadora de investimento, receita e payback
-- [x] 5.4 - **Lead capture** (nome, telefone, email) para liberar acesso
-- [x] 5.5 - Preços aparecem APÓS o login (lead liberado)
-- [x] 5.6 - Galeria de carregadores WEMOB (7 modelos)
-- [x] 5.7 - Seleção de carregador por clique no ícone
-- [x] 5.8 - Cálculos automáticos em tempo real
-- [x] 5.9 - Geração de PDF profissional
-- [x] 5.10 - Histórico de propostas (localStorage)
-- [x] 5.11 - Dashboard administrativo escondido (⚙️ canto inferior esquerdo)
-- [x] 5.12 - Reajuste de preços em massa
-- [x] 5.13 - Calculadora de tempo de carga
-- [x] 5.14 - Exportação CSV
-- [x] 5.15 - Responsivo e otimizado
-
-#### 6. GESTÃO ENERGÉTICA
-- [ ] 6.1 - Página em `pages/gestao.html` (pendente)
-- [ ] 6.2 - Explicação sobre monitoramento contínuo (pendente)
-- [ ] 6.3 - Links para contato (pendente)
+# F3F Gestão — Site | Documentação e Roadmap
+**URL de Produção:** https://f3f.vercel.app  
+**Repositório:** https://github.com/f3fgestao/site  
+**Conta Vercel:** f3fgestao  
+**Conta GitHub:** f3fgestao (token: ver variável de ambiente no painel Vercel)  
+**Supabase projeto:** `nmzifhqivuhdfwlelmxp.supabase.co`  
+**Atualizado em:** 2026-10-21
 
 ---
 
-## 📋 Checklist de Implementação
+## Estrutura de Arquivos
 
-### Estrutura do Site
-- [x] `index.html` - Landing page principal (leve e otimizada)
-- [x] `pages/mercado-livre.html` - Mercado Livre de Energia
-- [x] `pages/eletropostos.html` - Eletropostos / Mobilidade
-- [ ] `pages/solar.html` - GD & Solar
-- [ ] `pages/bess.html` - BESS (Baterias)
-- [ ] `pages/infraestrutura.html` - Redes e Subestações
-- [ ] `pages/gestao.html` - Gestão Energética
-
-### Páginas Internas - Padrão F3F
-- [x] Header fixo com logo e botão "Voltar ao Início"
-- [x] Hero com título e descrição
-- [x] Conteúdo específico da solução
-- [x] CTA com WhatsApp e E-mail
-- [x] Footer com informações da F3F
-- [x] Botão "Voltar ao topo"
-- [x] Design responsivo
+```
+site_bkp/
+├── index.html              ← Landing page principal (SPA multi-seção)
+├── vercel.json             ← Roteamento Vercel (corrigido para servir /pages/ direto)
+├── pages/
+│   ├── mercado-livre.html  ← Página completa (978 linhas, conteúdo rico)
+│   ├── eletroposto.html    ← Simulador completo (1004 linhas) com modal de lead
+│   ├── bess.html           ← Esqueleto (158 linhas) — precisa de conteúdo
+│   ├── solar.html          ← Esqueleto (158 linhas) — precisa de conteúdo
+│   ├── gestao.html         ← Esqueleto (158 linhas) — precisa de conteúdo
+│   └── infra.html          ← Esqueleto (158 linhas) — precisa de conteúdo
+├── assets/                 ← Imagens e arquivos estáticos
+└── imagens/
+```
 
 ---
 
-## 🎯 Próximas Etapas (Prioridade)
+## Estado Atual (v1 — Redondo ✅)
 
-### Prioridade Alta
-1. **[ ] GD & SOLAR** - Criar página `pages/solar.html`
-   - Imagem ilustrativa (solar panels)
-   - Explicação sobre geração distribuída
-   - Vantagens e economia
-   - Link para contato
+### index.html — Seções
+| Seção | Status |
+|---|---|
+| Hero ("Um projeto de energia. Vários especialistas.") | ✅ |
+| Diferencial | ✅ |
+| Soluções (6 cards clicáveis) | ✅ |
+| Como Funciona | ✅ |
+| Fale Conosco | ✅ |
+| Footer | ✅ |
 
-2. **[ ] GESTÃO ENERGÉTICA** - Criar página `pages/gestao.html`
-   - Monitoramento contínuo
-   - Estratégias de eficiência
-   - Cases de sucesso
+### O que foi feito nesta sessão
+- **Botão admin (⚙️):** invisível por padrão, aparece só no hover — evita curiosos
+- **WEG/WEMOB removidos** do index e da eletroposto.html — site "bandeira branca"
+- **Todos os 6 cards são clicáveis inteiros** (convertidos de `<div>` para `<a>`)
+- **Eletroposto → pages/eletroposto.html** (link direto, removido o overlay SPA)
+- **vercel.json corrigido:** rota catch-all não mais engolia `/pages/*`
+- **Link infra.html corrigido** (`infraestrutura.html` → `infra.html`)
+- **Tag `</a>` corrigida** no card Eletropostos (estava `</div>`, quebrava HTML)
 
-### Prioridade Média
-3. **[ ] BESS** - Criar página `pages/bess.html`
-   - Armazenamento de energia
-   - Aplicações e benefícios
-   - Integração com solar
-
-4. **[ ] INFRAESTRUTURA** - Criar página `pages/infraestrutura.html`
-   - Redes elétricas
-   - Subestações
-   - Projetos de conexão
-
----
-
-## 📊 Versionamento
-
-| Versão | Data | Alterações |
-|--------|------|------------|
-| v1.0.0 | 01/08/2026 | Versão inicial do site |
-| v1.0.1 | 06/08/2026 | Adicionado Eletropostos com dimensionador |
-| v1.0.2 | 08/08/2026 | - Extraído Eletropostos para página separada<br>- Criado Mercado Livre<br>- Atualizado ROADMAP<br>- Estrutura de pastas organizada |
+### pages/eletroposto.html — Funcionalidades
+- Modal de lead: nome, telefone (máscara), e-mail (validação), cidade/UF
+- Botões "Salvar Proposta" e "Gerar PDF" bloqueados até lead enviado
+- Campo "Nome do Projeto" em largura total (fora do grid)
+- Tipo de local: opções Residência e Outro adicionadas
+- Custo de Obra/Infra oculto (campo admin, valor padrão R$15.000)
+- Carregadores sem marca (genéricos: "Carregador DC 30kW" etc.)
+- Lead salvo no Supabase (tabela `leads`)
 
 ---
 
-## 🏗️ Estrutura de Pastas
+## Roadmap — Próximas Etapas
+
+### 🔴 Alta Prioridade
+
+**1. Páginas de serviço com conteúdo real (bess, solar, gestao, infra)**
+- Atualmente são esqueletos de 158 linhas
+- Modelo: seguir o padrão de `mercado-livre.html` (hero, benefícios, como funciona, CTA)
+- Cada página deve ter CTA flutuante "Fale Conosco" / WhatsApp acompanhando o scroll
+- Sugestão de estrutura:
+  - Hero com chamada forte + badge da solução
+  - O que é / Como funciona (cards ou ícones)
+  - Benefícios para o cliente
+  - Casos de uso / perfil do cliente ideal
+  - Simulador ou calculadora simples (quando aplicável)
+  - CTA final + botão WhatsApp fixo
+
+**2. CTA flutuante em todas as páginas**
+- Botão "Fale Conosco" ou "Simular" fixo no canto inferior direito
+- Acompanha o scroll em todas as páginas de serviço
+- Modelo: WhatsApp direto com texto pré-preenchido por solução
+
+**3. Eletroposto — melhorias no simulador**
+- Gerar PDF real (html2pdf.js ou similar)
+- Salvar proposta no Supabase (não só localStorage)
+- Compartilhar proposta por link
+
+### 🟡 Média Prioridade
+
+**4. Admin panel — preços dos carregadores**
+- Ainda tem WEMOB nos nomes dentro do painel admin do index.html
+- Atualizar para nomes genéricos consistentes com eletroposto.html
+
+**5. Mercado Livre — integrar lead/contato**
+- Página mais completa já tem conteúdo mas não coleta lead
+- Adicionar formulário ou CTA WhatsApp ao final
+
+**6. SEO básico**
+- Meta descriptions em todas as páginas
+- Open Graph tags (para compartilhar no WhatsApp/LinkedIn)
+- Favicon e ícone da F3F
+
+**7. Analytics**
+- Google Analytics ou Vercel Analytics
+- Rastrear cliques nos cards e conversões de lead
+
+### 🟢 Baixa Prioridade / Futuro
+
+**8. Simulador Solar**
+- Calculadora de dimensionamento fotovoltaico
+- Similar ao eletroposto, com lead gate
+
+**9. Simulador Mercado Livre**
+- Calculadora de economia na migração para ACL
+- Input: consumo mensal, distribuidora, demanda contratada
+
+**10. Blog / Conteúdo**
+- Artigos sobre GD, BESS, ACL
+- Melhora SEO e autoridade da marca
+
+---
+
+## Tecnologias
+
+| Tecnologia | Uso |
+|---|---|
+| HTML/CSS/JS puro | Frontend (sem framework no index e páginas) |
+| React 18 (CDN) + Babel | Componente React inline no index (dimensionador) |
+| Supabase | Backend de leads |
+| Vercel | Hospedagem e deploy automático via GitHub |
+| GitHub (f3fgestao/site) | Repositório e CI/CD |
+
+---
+
+## Como fazer deploy
+
+```bash
+cd C:\_a\site_bkp
+git add .
+git commit -m "descrição"
+git push https://f3fgestao:TOKEN@github.com/f3fgestao/site.git main
+```
+O Vercel detecta o push e faz deploy automático em ~1-2 minutos.
+

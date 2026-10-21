@@ -1,159 +1,198 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Solar | F3F Gestão</title>
+  <title>Energia Solar | F3F Gestão Energética</title>
+  <meta name="description" content="Projetos de energia solar fotovoltaica para indústria e comércio. Geração distribuída, usinas UFV e soluções Solar+BESS com a F3F Gestão.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: #020817;
-      color: #f0f4f8;
-    }
-
-    .wrap {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    .header {
-      background: rgba(2, 8, 23, 0.95);
-      padding: 16px 0;
-      border-bottom: 1px solid #17345d;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 100;
-    }
-
-    .header .wrap {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 1.3rem;
-      font-weight: 800;
-      color: #fff;
-    }
-
-    .logo span {
-      color: #e6c84f;
-    }
-
-    .btn-voltar {
-      color: #e6c84f;
-      text-decoration: none;
-      border: 1px solid #e6c84f;
-      padding: 6px 16px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-    }
-
-    .btn-voltar:hover {
-      background: #e6c84f;
-      color: #020817;
-    }
-
-    .hero {
-      padding: 120px 0 40px;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: 2.2rem;
-    }
-
-    .hero h1 span {
-      color: #e6c84f;
-    }
-
-    .hero p {
-      color: #94a3b8;
-      max-width: 600px;
-      margin: 16px auto 0;
-    }
-
-    .card {
-      background: #0b1e3b;
-      border: 1px solid #17345d;
-      border-radius: 12px;
-      padding: 24px;
-      margin: 20px 0;
-    }
-
-    .card h3 {
-      color: #e6c84f;
-    }
-
-    .card p {
-      color: #94a3b8;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 28px;
-      border-radius: 8px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    .btn-wsp {
-      background: #25D366;
-      color: #fff;
-    }
-
-    .btn-wsp:hover {
-      transform: translateY(-2px);
-    }
-
-    .footer {
-      text-align: center;
-      padding: 30px 0;
-      border-top: 1px solid #17345d;
-      color: #94a3b8;
-      font-size: 0.85rem;
-      margin-top: 40px;
-    }
+    :root { --bg:#020817;--bg-panel:#0b1e3b;--bg-alt:#07172f;--accent:#e6c84f;--purple:#6C3CE1;--green:#22c55e;--text:#e2e8f0;--text-dim:#94a3b8;--line:#17345d; }
+    *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--text);}a{color:inherit;text-decoration:none;}.wrap{max-width:1040px;margin:0 auto;padding:0 24px;}
+    header{position:fixed;top:0;width:100%;z-index:200;background:rgba(2,8,23,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+    nav{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;max-width:1040px;margin:0 auto;}
+    .logo{font-size:1.2rem;font-weight:800;letter-spacing:-0.02em;}.logo span{color:var(--accent);}.logo-dot{display:inline-block;width:8px;height:8px;background:var(--accent);border-radius:50%;margin-right:6px;}
+    .btn-voltar{padding:7px 18px;border-radius:30px;background:rgba(230,200,79,0.1);color:var(--accent);border:1px solid var(--accent);font-size:0.85rem;font-weight:600;transition:all 0.2s;}
+    .btn-voltar:hover{background:var(--accent);color:var(--bg);}
+    .hero{min-height:70vh;display:flex;align-items:center;padding:120px 24px 80px;background:radial-gradient(circle at 60% 30%,rgba(230,200,79,0.08),transparent 60%),radial-gradient(circle at 20% 80%,rgba(34,197,94,0.05),transparent 50%);}
+    .badge{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);background:rgba(230,200,79,0.08);border:1px solid rgba(230,200,79,0.2);padding:5px 14px;border-radius:20px;margin-bottom:24px;}
+    .hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:700;line-height:1.15;margin-bottom:20px;}.hero h1 em{font-style:normal;color:var(--accent);}
+    .hero p{color:var(--text-dim);font-size:1.1rem;max-width:560px;line-height:1.7;margin-bottom:32px;}
+    .hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:8px;font-weight:700;font-size:0.95rem;transition:all 0.25s;cursor:pointer;border:none;}
+    .btn-primary{background:var(--accent);color:var(--bg);}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(230,200,79,0.3);}
+    .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--line);}.btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+    section{padding:80px 24px;}section:nth-child(even){background:var(--bg-alt);}
+    .section-label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+    .section-label::before{content:'';display:inline-block;width:28px;height:2px;background:var(--accent);}
+    h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;margin-bottom:12px;}
+    .section-sub{color:var(--text-dim);font-size:1rem;max-width:560px;line-height:1.7;margin-bottom:48px;}
+    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
+    .card{background:var(--bg-panel);border:1px solid var(--line);border-radius:14px;padding:28px;transition:border-color 0.2s,transform 0.2s;}
+    .card:hover{border-color:var(--accent);transform:translateY(-3px);}
+    .card-icon{font-size:2rem;margin-bottom:14px;}.card h3{font-size:1.05rem;font-weight:700;margin-bottom:8px;}.card p{color:var(--text-dim);font-size:0.9rem;line-height:1.6;}
+    .card.highlight{border-color:var(--accent);}
+    .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;margin-top:40px;}
+    .stat{text-align:center;padding:28px 20px;background:var(--bg-panel);border:1px solid var(--line);border-radius:14px;}
+    .stat .num{font-size:2.4rem;font-weight:800;color:var(--accent);line-height:1;}.stat .desc{color:var(--text-dim);font-size:0.85rem;margin-top:6px;}
+    .perfil-list{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;}
+    .perfil-list li{display:flex;align-items:flex-start;gap:10px;background:var(--bg-panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;font-size:0.92rem;color:var(--text-dim);}
+    .perfil-list li span{font-size:1.2rem;flex-shrink:0;}
+    .steps{display:flex;flex-direction:column;gap:0;}
+    .step{display:flex;gap:20px;padding:24px 0;border-bottom:1px solid var(--line);}.step:last-child{border-bottom:none;}
+    .step-num{flex-shrink:0;width:40px;height:40px;border-radius:50%;background:rgba(230,200,79,0.1);border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:0.85rem;font-weight:700;color:var(--accent);}
+    .step-body h4{font-weight:700;margin-bottom:4px;}.step-body p{color:var(--text-dim);font-size:0.9rem;line-height:1.6;}
+    .cta-final{text-align:center;padding:80px 24px;background:radial-gradient(circle at 50% 50%,rgba(230,200,79,0.06),transparent 60%);}
+    .cta-final h2{margin-bottom:12px;}.cta-final p{color:var(--text-dim);margin-bottom:32px;}
+    .cta-float{position:fixed;bottom:28px;right:28px;z-index:300;}
+    .cta-float a{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:30px;font-weight:700;font-size:0.88rem;box-shadow:0 4px 20px rgba(0,0,0,0.4);transition:all 0.25s;background:#25D366;color:#fff;}
+    .cta-float a:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,0.4);}
+    footer{padding:24px;border-top:1px solid var(--line);text-align:center;color:var(--text-dim);font-size:0.85rem;}
+    @media(max-width:600px){.hero-btns{flex-direction:column;}.cta-float{bottom:16px;right:16px;}.cta-float a span.label{display:none;}}
   </style>
 </head>
-
 <body>
-  <header class="header">
-    <div class="wrap">
-      <div class="logo">F3F <span>Gestão</span></div>
-      <a href="../index.html" class="btn-voltar">← Voltar</a>
-    </div>
-  </header>
-  <section class="hero">
-    <div class="wrap">
-      <h1>☀️ Geração Distribuída e <span>Solar</span></h1>
-      <p>Projetos fotovoltaicos de alta eficiência para reduzir seus custos com energia.</p>
-    </div>
-  </section>
-  <div class="wrap">
-    <div class="card">
-      <h3>☀️ Energia Solar para sua Empresa</h3>
-      <p>Reduza sua conta de luz com projetos solares personalizados.</p>
-    </div>
-    <div style="text-align:center;margin:30px 0;">
-      <a href="https://wa.me/5562992892170?text=Olá!%20Quero%20saber%20sobre%20Solar" class="btn btn-wsp"
-        target="_blank">📱 Falar com Especialista</a>
-    </div>
-  </div>
-  <div class="footer">
-    <div class="wrap">© 2026 F3F Gestão Energética | (62) 99289-2170</div>
-  </div>
-</body>
 
+<div class="cta-float">
+  <a href="https://wa.me/5562992892170?text=Olá!%20Tenho%20interesse%20em%20um%20projeto%20solar%20com%20a%20F3F%20Gestão." target="_blank">
+    💬 <span class="label">Falar com Especialista</span>
+  </a>
+</div>
+
+<header>
+  <nav>
+    <a href="../index.html" class="logo"><span class="logo-dot"></span>F3F <span>Gestão</span></a>
+    <a href="../index.html" class="btn-voltar">← Voltar ao Início</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="badge">☀️ Energia Solar Fotovoltaica</div>
+    <h1>Gere sua própria energia.<br><em>Corte a fatura. Para sempre.</em></h1>
+    <p>Projetos solares sob medida para indústria, comércio e agronegócio — do dimensionamento ao monitoramento, com garantia de geração.</p>
+    <div class="hero-btns">
+      <a class="btn btn-primary" href="https://wa.me/5562992892170?text=Olá!%20Quero%20um%20estudo%20de%20solar%20com%20a%20F3F%20Gestão." target="_blank">📱 Solicitar Proposta Solar</a>
+      <a class="btn btn-ghost" href="#como-funciona">Como funciona ↓</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-label">O que oferecemos</div>
+    <h2>Soluções solares para cada perfil de consumidor</h2>
+    <p class="section-sub">Da geração distribuída residencial-comercial às grandes usinas fotovoltaicas industriais, a F3F projeta e gerencia cada etapa.</p>
+    <div class="grid-3">
+      <div class="card highlight">
+        <div class="card-icon">🏭</div>
+        <h3>Solar Industrial (UFV)</h3>
+        <p>Usinas fotovoltaicas de grande porte no próprio terreno da empresa. Ideal para consumo acima de 500 kW/mês.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏢</div>
+        <h3>Geração Distribuída (GD)</h3>
+        <p>Placas no telhado ou área coberta. Compensa na conta de luz via créditos de energia — sem grandes obras.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔋</div>
+        <h3>Solar + BESS</h3>
+        <p>Integre geração solar com armazenamento em baterias. Use à noite, elimine ponta e maximize o autoconsumo.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌾</div>
+        <h3>Solar para Agronegócio</h3>
+        <p>Sistemas para irrigação, secagem de grãos, câmaras frias e infraestrutura rural. Payback acelerado no campo.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <h3>Solar no Mercado Livre</h3>
+        <p>Consumidores livres podem combinar geração própria com contratos de energia renovável. Estratégia completa de custo.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <h3>Monitoramento & Performance</h3>
+        <p>Dashboard em tempo real de geração, consumo e economia. Alertas automáticos em caso de desvio de performance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-label">Resultados</div>
+    <h2>Números que falam por si</h2>
+    <div class="stats">
+      <div class="stat"><div class="num">-90%</div><div class="desc">Redução na conta de energia (GD)</div></div>
+      <div class="stat"><div class="num">3–5 anos</div><div class="desc">Payback típico industrial</div></div>
+      <div class="stat"><div class="num">25 anos</div><div class="desc">Vida útil dos módulos</div></div>
+      <div class="stat"><div class="num">0 CO₂</div><div class="desc">Emissões na geração solar</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="como-funciona">
+  <div class="wrap">
+    <div class="section-label">Como Funciona</div>
+    <h2>Do estudo ao sistema funcionando</h2>
+    <p class="section-sub">Cuidamos de toda a jornada — engenharia, fornecedores, aprovações na distribuidora e monitoramento pós-instalação.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-body"><h4>Análise das Faturas e Perfil de Carga</h4><p>Identificamos seu padrão de consumo para dimensionar o sistema com precisão — sem super ou subdimensionamento.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-body"><h4>Estudo Solar e Proposta Técnica</h4><p>Calculamos o geração estimada (kWh/ano), o número de módulos e inversores, CAPEX, payback e retorno sobre o investimento.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-body"><h4>Projeto Elétrico e Aprovação</h4><p>Desenvolvemos o projeto e gerenciamos todo o processo de aprovação junto à distribuidora local.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-body"><h4>Instalação com Equipe Especializada</h4><p>Gerenciamento completo da obra: estrutura metálica, cabeamento, inversores e quadros elétricos.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">05</div>
+        <div class="step-body"><h4>Vistoria, Ativação e Monitoramento</h4><p>Acompanhamos a vistoria da distribuidora, a ativação e entregamos o acesso ao monitoramento em tempo real.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-label">Perfil do Cliente</div>
+    <h2>Para quem o solar é mais vantajoso?</h2>
+    <p class="section-sub">Qualquer consumidor com área disponível e conta de energia relevante se beneficia. Veja os perfis mais comuns.</p>
+    <ul class="perfil-list">
+      <li><span>🏭</span>Indústrias com consumo acima de 200 kWh/mês e área de terreno disponível</li>
+      <li><span>🏢</span>Prédios comerciais, galpões e condomínios logísticos</li>
+      <li><span>🛒</span>Supermercados, postos de combustível e redes de varejo</li>
+      <li><span>🌾</span>Produtores rurais e cooperativas agrícolas</li>
+      <li><span>🏫</span>Escolas, faculdades, hospitais e órgãos públicos</li>
+      <li><span>⚡</span>Consumidores no Mercado Livre buscando reduzir o custo total</li>
+    </ul>
+  </div>
+</section>
+
+<div class="cta-final">
+  <div class="wrap">
+    <div class="section-label" style="justify-content:center;">Próximo passo</div>
+    <h2>Receba seu estudo solar gratuito</h2>
+    <p>Em até 48h você tem a proposta técnica com geração estimada, CAPEX e payback — sem custo e sem compromisso.</p>
+    <a class="btn btn-primary" href="https://wa.me/5562992892170?text=Olá!%20Quero%20um%20estudo%20solar%20com%20a%20F3F%20Gestão." target="_blank" style="font-size:1rem;padding:15px 32px;">📱 Solicitar Estudo Solar</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <strong>F3F Gestão</strong> — Projetos de Energia &nbsp;|&nbsp; f3f.gestao@gmail.com &nbsp;|&nbsp; (62) 99289-2170 &nbsp;|&nbsp;
+    <a href="../index.html" style="color:var(--accent);">← Início</a>
+  </div>
+</footer>
+</body>
 </html>

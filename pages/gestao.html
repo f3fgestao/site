@@ -1,159 +1,196 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gestão | F3F Gestão</title>
+  <title>Gestão de Energia | F3F Gestão Energética</title>
+  <meta name="description" content="Gestão energética profissional — monitoramento, eficiência, contratos de energia e redução de custos na fatura elétrica.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: #020817;
-      color: #f0f4f8;
-    }
-
-    .wrap {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    .header {
-      background: rgba(2, 8, 23, 0.95);
-      padding: 16px 0;
-      border-bottom: 1px solid #17345d;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 100;
-    }
-
-    .header .wrap {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 1.3rem;
-      font-weight: 800;
-      color: #fff;
-    }
-
-    .logo span {
-      color: #e6c84f;
-    }
-
-    .btn-voltar {
-      color: #e6c84f;
-      text-decoration: none;
-      border: 1px solid #e6c84f;
-      padding: 6px 16px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-    }
-
-    .btn-voltar:hover {
-      background: #e6c84f;
-      color: #020817;
-    }
-
-    .hero {
-      padding: 120px 0 40px;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: 2.2rem;
-    }
-
-    .hero h1 span {
-      color: #e6c84f;
-    }
-
-    .hero p {
-      color: #94a3b8;
-      max-width: 600px;
-      margin: 16px auto 0;
-    }
-
-    .card {
-      background: #0b1e3b;
-      border: 1px solid #17345d;
-      border-radius: 12px;
-      padding: 24px;
-      margin: 20px 0;
-    }
-
-    .card h3 {
-      color: #e6c84f;
-    }
-
-    .card p {
-      color: #94a3b8;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 28px;
-      border-radius: 8px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    .btn-wsp {
-      background: #25D366;
-      color: #fff;
-    }
-
-    .btn-wsp:hover {
-      transform: translateY(-2px);
-    }
-
-    .footer {
-      text-align: center;
-      padding: 30px 0;
-      border-top: 1px solid #17345d;
-      color: #94a3b8;
-      font-size: 0.85rem;
-      margin-top: 40px;
-    }
+    :root{--bg:#020817;--bg-panel:#0b1e3b;--bg-alt:#07172f;--accent:#e6c84f;--purple:#6C3CE1;--green:#22c55e;--text:#e2e8f0;--text-dim:#94a3b8;--line:#17345d;}
+    *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--text);}a{color:inherit;text-decoration:none;}.wrap{max-width:1040px;margin:0 auto;padding:0 24px;}
+    header{position:fixed;top:0;width:100%;z-index:200;background:rgba(2,8,23,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+    nav{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;max-width:1040px;margin:0 auto;}
+    .logo{font-size:1.2rem;font-weight:800;}.logo span{color:var(--accent);}.logo-dot{display:inline-block;width:8px;height:8px;background:var(--accent);border-radius:50%;margin-right:6px;}
+    .btn-voltar{padding:7px 18px;border-radius:30px;background:rgba(230,200,79,0.1);color:var(--accent);border:1px solid var(--accent);font-size:0.85rem;font-weight:600;transition:all 0.2s;}.btn-voltar:hover{background:var(--accent);color:var(--bg);}
+    .hero{min-height:70vh;display:flex;align-items:center;padding:120px 24px 80px;background:radial-gradient(circle at 60% 30%,rgba(34,197,94,0.08),transparent 60%),radial-gradient(circle at 20% 80%,rgba(230,200,79,0.05),transparent 50%);}
+    .badge{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);background:rgba(230,200,79,0.08);border:1px solid rgba(230,200,79,0.2);padding:5px 14px;border-radius:20px;margin-bottom:24px;}
+    .hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:700;line-height:1.15;margin-bottom:20px;}.hero h1 em{font-style:normal;color:var(--accent);}
+    .hero p{color:var(--text-dim);font-size:1.1rem;max-width:560px;line-height:1.7;margin-bottom:32px;}
+    .hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:8px;font-weight:700;font-size:0.95rem;transition:all 0.25s;border:none;}
+    .btn-primary{background:var(--accent);color:var(--bg);}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(230,200,79,0.3);}
+    .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--line);}.btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+    section{padding:80px 24px;}section:nth-child(even){background:var(--bg-alt);}
+    .section-label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+    .section-label::before{content:'';display:inline-block;width:28px;height:2px;background:var(--accent);}
+    h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;margin-bottom:12px;}
+    .section-sub{color:var(--text-dim);font-size:1rem;max-width:560px;line-height:1.7;margin-bottom:48px;}
+    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
+    .card{background:var(--bg-panel);border:1px solid var(--line);border-radius:14px;padding:28px;transition:border-color 0.2s,transform 0.2s;}
+    .card:hover{border-color:var(--accent);transform:translateY(-3px);}
+    .card-icon{font-size:2rem;margin-bottom:14px;}.card h3{font-size:1.05rem;font-weight:700;margin-bottom:8px;}.card p{color:var(--text-dim);font-size:0.9rem;line-height:1.6;}
+    .card.highlight{border-color:var(--green);}
+    .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;margin-top:40px;}
+    .stat{text-align:center;padding:28px 20px;background:var(--bg-panel);border:1px solid var(--line);border-radius:14px;}
+    .stat .num{font-size:2.4rem;font-weight:800;color:var(--accent);line-height:1;}.stat .desc{color:var(--text-dim);font-size:0.85rem;margin-top:6px;}
+    .perfil-list{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;}
+    .perfil-list li{display:flex;align-items:flex-start;gap:10px;background:var(--bg-panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;font-size:0.92rem;color:var(--text-dim);}
+    .perfil-list li span{font-size:1.2rem;flex-shrink:0;}
+    .steps{display:flex;flex-direction:column;}.step{display:flex;gap:20px;padding:24px 0;border-bottom:1px solid var(--line);}.step:last-child{border-bottom:none;}
+    .step-num{flex-shrink:0;width:40px;height:40px;border-radius:50%;background:rgba(230,200,79,0.1);border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:0.85rem;font-weight:700;color:var(--accent);}
+    .step-body h4{font-weight:700;margin-bottom:4px;}.step-body p{color:var(--text-dim);font-size:0.9rem;line-height:1.6;}
+    .cta-final{text-align:center;padding:80px 24px;background:radial-gradient(circle at 50%,rgba(34,197,94,0.05),transparent 60%);}
+    .cta-final h2{margin-bottom:12px;}.cta-final p{color:var(--text-dim);margin-bottom:32px;}
+    .cta-float{position:fixed;bottom:28px;right:28px;z-index:300;}
+    .cta-float a{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:30px;font-weight:700;font-size:0.88rem;box-shadow:0 4px 20px rgba(0,0,0,0.4);transition:all 0.25s;background:#25D366;color:#fff;}
+    .cta-float a:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,0.4);}
+    footer{padding:24px;border-top:1px solid var(--line);text-align:center;color:var(--text-dim);font-size:0.85rem;}
+    @media(max-width:600px){.hero-btns{flex-direction:column;}.cta-float{bottom:16px;right:16px;}.cta-float a span.label{display:none;}}
   </style>
 </head>
-
 <body>
-  <header class="header">
-    <div class="wrap">
-      <div class="logo">F3F <span>Gestão</span></div>
-      <a href="../index.html" class="btn-voltar">← Voltar</a>
-    </div>
-  </header>
-  <section class="hero">
-    <div class="wrap">
-      <h1>📊 Gestão <span>Energética</span></h1>
-      <p>Monitoramento e eficiência energética para redução contínua de custos.</p>
-    </div>
-  </section>
-  <div class="wrap">
-    <div class="card">
-      <h3>📊 Gestão de Energia</h3>
-      <p>Monitore e otimize o consumo de energia da sua empresa.</p>
-    </div>
-    <div style="text-align:center;margin:30px 0;">
-      <a href="https://wa.me/5562992892170?text=Olá!%20Quero%20saber%20sobre%20Gestão%20Energética" class="btn btn-wsp"
-        target="_blank">📱 Falar com Especialista</a>
-    </div>
-  </div>
-  <div class="footer">
-    <div class="wrap">© 2026 F3F Gestão Energética | (62) 99289-2170</div>
-  </div>
-</body>
 
+<div class="cta-float">
+  <a href="https://wa.me/5562992892170?text=Olá!%20Quero%20reduzir%20minha%20fatura%20de%20energia%20com%20a%20F3F%20Gestão." target="_blank">
+    💬 <span class="label">Falar com Especialista</span>
+  </a>
+</div>
+
+<header>
+  <nav>
+    <a href="../index.html" class="logo"><span class="logo-dot"></span>F3F <span>Gestão</span></a>
+    <a href="../index.html" class="btn-voltar">← Voltar ao Início</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="badge">📊 Gestão Energética</div>
+    <h1>Reduza sua fatura.<br><em>Com dados, não com achismos.</em></h1>
+    <p>Monitoramento inteligente, análise de contratos, identificação de desperdícios e estratégias de compra de energia — tudo para você pagar menos pelo que consome.</p>
+    <div class="hero-btns">
+      <a class="btn btn-primary" href="https://wa.me/5562992892170?text=Olá!%20Quero%20uma%20análise%20de%20gestão%20energética%20com%20a%20F3F." target="_blank">📱 Solicitar Análise Gratuita</a>
+      <a class="btn btn-ghost" href="#como-funciona">Como funciona ↓</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-label">Nossos Serviços</div>
+    <h2>Gestão completa da sua energia</h2>
+    <p class="section-sub">A F3F atua em todas as frentes que impactam sua fatura — desde o contrato com a distribuidora até o monitoramento em tempo real.</p>
+    <div class="grid-3">
+      <div class="card highlight">
+        <div class="card-icon">📋</div>
+        <h3>Auditoria de Faturas</h3>
+        <p>Identificamos cobranças indevidas, erros de leitura e enquadramentos tarifários incorretos. Muitos clientes recuperam valores pagos a mais.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <h3>Monitoramento em Tempo Real</h3>
+        <p>Dashboard com consumo, demanda e qualidade de energia 24/7. Alertas automáticos antes que o problema vire prejuízo.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <h3>Migração ao Mercado Livre</h3>
+        <p>Analisamos se você pode migrar para o ACL (Ambiente de Contratação Livre) e qual a estratégia de contrato mais vantajosa.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <h3>Adequação Tarifária</h3>
+        <p>Revisamos o grupo tarifário (A4, A3a, B3), modalidade (TUV, Horária) e subgrupo para garantir o menor custo contratual.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">💡</div>
+        <h3>Projetos de Eficiência</h3>
+        <p>Iluminação LED, motores de alto rendimento, variadores de frequência e ar-comprimido. Menos consumo, mesma produção.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📑</div>
+        <h3>Relatórios e Indicadores</h3>
+        <p>KPIs de energia mensais, análise de tendência e comparativo de metas. Combustível para decisões de gestão.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-label">Impacto Real</div>
+    <h2>O que nossos clientes economizam</h2>
+    <div class="stats">
+      <div class="stat"><div class="num">-25%</div><div class="desc">Redução média na fatura em 12 meses</div></div>
+      <div class="stat"><div class="num">6 meses</div><div class="desc">Payback típico de projetos de eficiência</div></div>
+      <div class="stat"><div class="num">100%</div><div class="desc">Clientes com auditoria encontraram erros</div></div>
+      <div class="stat"><div class="num">24/7</div><div class="desc">Monitoramento e alertas em tempo real</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="como-funciona">
+  <div class="wrap">
+    <div class="section-label">Como Funciona</div>
+    <h2>Nossa metodologia de gestão</h2>
+    <p class="section-sub">Um processo contínuo — não pontual — que vai reduzindo sua fatura mês a mês.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-body"><h4>Diagnóstico das Faturas (12 meses)</h4><p>Analisamos um ano de faturas para identificar padrões, erros e oportunidades de economia imediata.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-body"><h4>Relatório de Oportunidades</h4><p>Entregamos um relatório com todas as ações identificadas, ordenadas por potencial de economia e facilidade de execução.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-body"><h4>Implantação das Ações</h4><p>Executamos as ações junto com seu time — da renegociação de contrato aos projetos de eficiência em campo.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-body"><h4>Monitoramento Contínuo</h4><p>Instalamos medidores e configuramos o dashboard. A partir daí, monitoramos e agimos antes que qualquer desvio vire custo.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">05</div>
+        <div class="step-body"><h4>Relatórios Mensais de Performance</h4><p>Todo mês você recebe um relatório claro com economia gerada, próximas ações e evolução dos indicadores.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-label">Perfil do Cliente</div>
+    <h2>Quem mais se beneficia da gestão energética?</h2>
+    <p class="section-sub">Qualquer empresa que gasta mais de R$ 10.000/mês em energia tem potencial de economia com gestão profissional.</p>
+    <ul class="perfil-list">
+      <li><span>🏭</span>Indústrias com processo produtivo contínuo e alta demanda</li>
+      <li><span>🏢</span>Prédios comerciais com múltiplos CNPJ e pontos de consumo</li>
+      <li><span>🛒</span>Redes de varejo, supermercados e franquias com muitas unidades</li>
+      <li><span>🏥</span>Hospitais, clínicas e laboratórios com consumo crítico</li>
+      <li><span>🌾</span>Agroindústrias e cooperativas com alta sazonalidade</li>
+      <li><span>⚡</span>Consumidores no ACR que querem avaliar a migração ao Mercado Livre</li>
+    </ul>
+  </div>
+</section>
+
+<div class="cta-final">
+  <div class="wrap">
+    <div class="section-label" style="justify-content:center;">Próximo passo</div>
+    <h2>Receba sua análise energética gratuita</h2>
+    <p>Envie suas 3 últimas faturas e em até 48h devolvemos um relatório com o potencial de economia da sua empresa.</p>
+    <a class="btn btn-primary" href="https://wa.me/5562992892170?text=Olá!%20Quero%20uma%20análise%20energética%20gratuita%20com%20a%20F3F%20Gestão." target="_blank" style="font-size:1rem;padding:15px 32px;">📱 Solicitar Análise Gratuita</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <strong>F3F Gestão</strong> — Projetos de Energia &nbsp;|&nbsp; f3f.gestao@gmail.com &nbsp;|&nbsp; (62) 99289-2170 &nbsp;|&nbsp;
+    <a href="../index.html" style="color:var(--accent);">← Início</a>
+  </div>
+</footer>
+</body>
 </html>

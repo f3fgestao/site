@@ -1,159 +1,196 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Infraestrutura | F3F Gestão</title>
+  <title>Infraestrutura Elétrica | F3F Gestão Energética</title>
+  <meta name="description" content="Projetos e obras de infraestrutura elétrica industrial — subestações, SPDA, cabines primárias, laudos e adequações NR-10.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: #020817;
-      color: #f0f4f8;
-    }
-
-    .wrap {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    .header {
-      background: rgba(2, 8, 23, 0.95);
-      padding: 16px 0;
-      border-bottom: 1px solid #17345d;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 100;
-    }
-
-    .header .wrap {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 1.3rem;
-      font-weight: 800;
-      color: #fff;
-    }
-
-    .logo span {
-      color: #e6c84f;
-    }
-
-    .btn-voltar {
-      color: #e6c84f;
-      text-decoration: none;
-      border: 1px solid #e6c84f;
-      padding: 6px 16px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-    }
-
-    .btn-voltar:hover {
-      background: #e6c84f;
-      color: #020817;
-    }
-
-    .hero {
-      padding: 120px 0 40px;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: 2.2rem;
-    }
-
-    .hero h1 span {
-      color: #e6c84f;
-    }
-
-    .hero p {
-      color: #94a3b8;
-      max-width: 600px;
-      margin: 16px auto 0;
-    }
-
-    .card {
-      background: #0b1e3b;
-      border: 1px solid #17345d;
-      border-radius: 12px;
-      padding: 24px;
-      margin: 20px 0;
-    }
-
-    .card h3 {
-      color: #e6c84f;
-    }
-
-    .card p {
-      color: #94a3b8;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 28px;
-      border-radius: 8px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    .btn-wsp {
-      background: #25D366;
-      color: #fff;
-    }
-
-    .btn-wsp:hover {
-      transform: translateY(-2px);
-    }
-
-    .footer {
-      text-align: center;
-      padding: 30px 0;
-      border-top: 1px solid #17345d;
-      color: #94a3b8;
-      font-size: 0.85rem;
-      margin-top: 40px;
-    }
+    :root{--bg:#020817;--bg-panel:#0b1e3b;--bg-alt:#07172f;--accent:#e6c84f;--purple:#6C3CE1;--orange:#f97316;--text:#e2e8f0;--text-dim:#94a3b8;--line:#17345d;}
+    *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--text);}a{color:inherit;text-decoration:none;}.wrap{max-width:1040px;margin:0 auto;padding:0 24px;}
+    header{position:fixed;top:0;width:100%;z-index:200;background:rgba(2,8,23,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+    nav{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;max-width:1040px;margin:0 auto;}
+    .logo{font-size:1.2rem;font-weight:800;}.logo span{color:var(--accent);}.logo-dot{display:inline-block;width:8px;height:8px;background:var(--accent);border-radius:50%;margin-right:6px;}
+    .btn-voltar{padding:7px 18px;border-radius:30px;background:rgba(230,200,79,0.1);color:var(--accent);border:1px solid var(--accent);font-size:0.85rem;font-weight:600;transition:all 0.2s;}.btn-voltar:hover{background:var(--accent);color:var(--bg);}
+    .hero{min-height:70vh;display:flex;align-items:center;padding:120px 24px 80px;background:radial-gradient(circle at 60% 30%,rgba(249,115,22,0.08),transparent 60%),radial-gradient(circle at 20% 80%,rgba(230,200,79,0.05),transparent 50%);}
+    .badge{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);background:rgba(230,200,79,0.08);border:1px solid rgba(230,200,79,0.2);padding:5px 14px;border-radius:20px;margin-bottom:24px;}
+    .hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:700;line-height:1.15;margin-bottom:20px;}.hero h1 em{font-style:normal;color:var(--accent);}
+    .hero p{color:var(--text-dim);font-size:1.1rem;max-width:560px;line-height:1.7;margin-bottom:32px;}
+    .hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:8px;font-weight:700;font-size:0.95rem;transition:all 0.25s;border:none;}
+    .btn-primary{background:var(--accent);color:var(--bg);}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(230,200,79,0.3);}
+    .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--line);}.btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+    section{padding:80px 24px;}section:nth-child(even){background:var(--bg-alt);}
+    .section-label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+    .section-label::before{content:'';display:inline-block;width:28px;height:2px;background:var(--accent);}
+    h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;margin-bottom:12px;}
+    .section-sub{color:var(--text-dim);font-size:1rem;max-width:560px;line-height:1.7;margin-bottom:48px;}
+    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
+    .card{background:var(--bg-panel);border:1px solid var(--line);border-radius:14px;padding:28px;transition:border-color 0.2s,transform 0.2s;}
+    .card:hover{border-color:var(--accent);transform:translateY(-3px);}
+    .card-icon{font-size:2rem;margin-bottom:14px;}.card h3{font-size:1.05rem;font-weight:700;margin-bottom:8px;}.card p{color:var(--text-dim);font-size:0.9rem;line-height:1.6;}
+    .card.highlight{border-color:var(--orange);}
+    .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;margin-top:40px;}
+    .stat{text-align:center;padding:28px 20px;background:var(--bg-panel);border:1px solid var(--line);border-radius:14px;}
+    .stat .num{font-size:2.4rem;font-weight:800;color:var(--accent);line-height:1;}.stat .desc{color:var(--text-dim);font-size:0.85rem;margin-top:6px;}
+    .perfil-list{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;}
+    .perfil-list li{display:flex;align-items:flex-start;gap:10px;background:var(--bg-panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;font-size:0.92rem;color:var(--text-dim);}
+    .perfil-list li span{font-size:1.2rem;flex-shrink:0;}
+    .steps{display:flex;flex-direction:column;}.step{display:flex;gap:20px;padding:24px 0;border-bottom:1px solid var(--line);}.step:last-child{border-bottom:none;}
+    .step-num{flex-shrink:0;width:40px;height:40px;border-radius:50%;background:rgba(230,200,79,0.1);border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:0.85rem;font-weight:700;color:var(--accent);}
+    .step-body h4{font-weight:700;margin-bottom:4px;}.step-body p{color:var(--text-dim);font-size:0.9rem;line-height:1.6;}
+    .cta-final{text-align:center;padding:80px 24px;background:radial-gradient(circle at 50%,rgba(249,115,22,0.05),transparent 60%);}
+    .cta-final h2{margin-bottom:12px;}.cta-final p{color:var(--text-dim);margin-bottom:32px;}
+    .cta-float{position:fixed;bottom:28px;right:28px;z-index:300;}
+    .cta-float a{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:30px;font-weight:700;font-size:0.88rem;box-shadow:0 4px 20px rgba(0,0,0,0.4);transition:all 0.25s;background:#25D366;color:#fff;}
+    .cta-float a:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,0.4);}
+    footer{padding:24px;border-top:1px solid var(--line);text-align:center;color:var(--text-dim);font-size:0.85rem;}
+    @media(max-width:600px){.hero-btns{flex-direction:column;}.cta-float{bottom:16px;right:16px;}.cta-float a span.label{display:none;}}
   </style>
 </head>
-
 <body>
-  <header class="header">
-    <div class="wrap">
-      <div class="logo">F3F <span>Gestão</span></div>
-      <a href="../index.html" class="btn-voltar">← Voltar</a>
-    </div>
-  </header>
-  <section class="hero">
-    <div class="wrap">
-      <h1>🏗️ Redes e <span>Subestações</span></h1>
-      <p>Projetos de infraestrutura elétrica e conexões à rede de média tensão.</p>
-    </div>
-  </section>
-  <div class="wrap">
-    <div class="card">
-      <h3>🏗️ Infraestrutura Elétrica</h3>
-      <p>Projetos completos de redes e subestações para sua empresa.</p>
-    </div>
-    <div style="text-align:center;margin:30px 0;">
-      <a href="https://wa.me/5562992892170?text=Olá!%20Quero%20saber%20sobre%20Infraestrutura" class="btn btn-wsp"
-        target="_blank">📱 Falar com Especialista</a>
-    </div>
-  </div>
-  <div class="footer">
-    <div class="wrap">© 2026 F3F Gestão Energética | (62) 99289-2170</div>
-  </div>
-</body>
 
+<div class="cta-float">
+  <a href="https://wa.me/5562992892170?text=Olá!%20Preciso%20de%20um%20projeto%20de%20infraestrutura%20elétrica%20com%20a%20F3F%20Gestão." target="_blank">
+    💬 <span class="label">Falar com Especialista</span>
+  </a>
+</div>
+
+<header>
+  <nav>
+    <a href="../index.html" class="logo"><span class="logo-dot"></span>F3F <span>Gestão</span></a>
+    <a href="../index.html" class="btn-voltar">← Voltar ao Início</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="badge">🔧 Infraestrutura Elétrica</div>
+    <h1>A base elétrica<br><em>que sua operação exige.</em></h1>
+    <p>Projetos, laudos e obras de infraestrutura elétrica industrial e comercial — subestações, SPDA, cabines primárias e adequações regulatórias com responsabilidade técnica.</p>
+    <div class="hero-btns">
+      <a class="btn btn-primary" href="https://wa.me/5562992892170?text=Olá!%20Preciso%20de%20um%20projeto%20elétrico%20com%20a%20F3F%20Gestão." target="_blank">📱 Solicitar Orçamento</a>
+      <a class="btn btn-ghost" href="#servicos">Ver serviços ↓</a>
+    </div>
+  </div>
+</section>
+
+<section id="servicos">
+  <div class="wrap">
+    <div class="section-label">Serviços</div>
+    <h2>Infraestrutura elétrica do início ao fim</h2>
+    <p class="section-sub">Engenharia, projetos, execução e laudos — com ART e responsabilidade técnica de ponta a ponta.</p>
+    <div class="grid-3">
+      <div class="card highlight">
+        <div class="card-icon">🏗️</div>
+        <h3>Subestações de Energia</h3>
+        <p>Projeto e construção de subestações MT/BT — cabines primárias, transformadores, proteções e medição.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <h3>Cabines Primárias e Secundárias</h3>
+        <p>Adequação, ampliação e manutenção de cabines. Conformidade com normas da distribuidora e ANEEL.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">⛈️</div>
+        <h3>SPDA (Para-Raios)</h3>
+        <p>Sistemas de Proteção contra Descargas Atmosféricas: projeto, execução e laudo conforme NBR 5419.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔌</div>
+        <h3>Quadros de Distribuição</h3>
+        <p>Projeto e montagem de QGBT, QDC e painéis de automação. Especificação, fabricação e comissionamento.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <h3>Laudos e Adequação NR-10</h3>
+        <p>Laudos de conformidade, análise de risco elétrico e projetos de adequação à Norma Regulamentadora 10.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔍</div>
+        <h3>Termografia e Inspeção</h3>
+        <p>Inspeção termográfica de painéis, barramentos e conexões. Identifica pontos quentes antes de falhas e incêndios.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-label">Diferenciais</div>
+    <h2>Por que contratar a F3F para sua infraestrutura?</h2>
+    <div class="stats">
+      <div class="stat"><div class="num">ART</div><div class="desc">Responsabilidade técnica em todos os projetos</div></div>
+      <div class="stat"><div class="num">NBR</div><div class="desc">Conformidade com normas ABNT e distribuidoras</div></div>
+      <div class="stat"><div class="num">24h</div><div class="desc">Atendimento em emergências elétricas</div></div>
+      <div class="stat"><div class="num">100%</div><div class="desc">Projetos aprovados nas distribuidoras</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="como-funciona">
+  <div class="wrap">
+    <div class="section-label">Como Funciona</div>
+    <h2>Da visita técnica à entrega da obra</h2>
+    <p class="section-sub">Processo estruturado para obras elétricas sem surpresas — com cronograma, ART e documentação completa.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-body"><h4>Visita Técnica e Levantamento</h4><p>Nosso engenheiro visita a instalação, levanta as necessidades e identifica riscos ou não-conformidades existentes.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-body"><h4>Projeto Elétrico e Memorial</h4><p>Elaboramos o projeto executivo completo com especificações técnicas, unifilar, layouts e memorial descritivo.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-body"><h4>Aprovação e ART</h4><p>Protocolo do projeto na distribuidora ou órgão competente, emissão de ART junto ao CREA regional.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-body"><h4>Execução da Obra</h4><p>Equipe especializada executa dentro do prazo e padrão acordados, com acompanhamento diário de engenharia.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">05</div>
+        <div class="step-body"><h4>Comissionamento e As-Built</h4><p>Testes, energização supervisionada e entrega do as-built e laudos — toda documentação para manutenção futura.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-label">Perfil do Cliente</div>
+    <h2>Quem precisa de infraestrutura elétrica?</h2>
+    <p class="section-sub">Toda empresa que expande, moderniza ou tem instalações antigas com risco elétrico ou não-conformidade regulatória.</p>
+    <ul class="perfil-list">
+      <li><span>🏭</span>Indústrias ampliando capacidade produtiva e potência instalada</li>
+      <li><span>🏗️</span>Construtoras e incorporadoras em obras comerciais e industriais</li>
+      <li><span>🛒</span>Varejo e food service abrindo novas unidades</li>
+      <li><span>☀️</span>Projetos solares que necessitam de adequação de cabine</li>
+      <li><span>🔋</span>Instalações de BESS e infraestrutura de carregamento</li>
+      <li><span>📋</span>Empresas com pendências de vistoria ou laudos vencidos</li>
+    </ul>
+  </div>
+</section>
+
+<div class="cta-final">
+  <div class="wrap">
+    <div class="section-label" style="justify-content:center;">Próximo passo</div>
+    <h2>Solicite uma visita técnica</h2>
+    <p>Nossa equipe vai até você, avalia a instalação e apresenta a proposta com projeto, prazo e orçamento detalhado.</p>
+    <a class="btn btn-primary" href="https://wa.me/5562992892170?text=Olá!%20Quero%20agendar%20uma%20visita%20técnica%20com%20a%20F3F%20Gestão." target="_blank" style="font-size:1rem;padding:15px 32px;">📱 Agendar Visita Técnica</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <strong>F3F Gestão</strong> — Projetos de Energia &nbsp;|&nbsp; f3f.gestao@gmail.com &nbsp;|&nbsp; (62) 99289-2170 &nbsp;|&nbsp;
+    <a href="../index.html" style="color:var(--accent);">← Início</a>
+  </div>
+</footer>
+</body>
 </html>
